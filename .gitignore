@@ -1,5 +1,4 @@
 .env
 __pycache__/
 .pytest_cache/
-data/seen.json
 debug_scraper.py
