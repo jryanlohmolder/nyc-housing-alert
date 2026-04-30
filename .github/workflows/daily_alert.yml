@@ -1,33 +1,30 @@
 name: Daily Housing Alert
-
 on:
   schedule:
     - cron: '47 22 * * *'
-
 permissions:
   contents: write
-
 jobs:
   run-alert:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-
       - name: Install dependencies
         run: pip install -r requirements.txt
-
+      - name: Install Playwright browsers & dependencies
+        run: |
+          playwright install chromium
+          playwright install-deps chromium
       - name: Run alert
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         run: python main.py
-
       - name: Commit updated seen and archive
         run: |
           git config user.email "actions@github.com"
