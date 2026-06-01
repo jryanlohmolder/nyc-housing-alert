@@ -10,7 +10,7 @@ load_dotenv()
 
 GMAIL_ADDRESS = os.getenv("GMAIL_ADDRESS")
 APP_PASSWORD = os.getenv("APP_PASSWORD")
-TO_ADDRESSES = ["josh.r.lohmolder@gmail.com", "sarinakbrown@gmail.com"]
+TO_ADDRESSES = os.getenv("TO_ADDRESSES")
 
 def send_notification(new_listing: list):
     # Build email
