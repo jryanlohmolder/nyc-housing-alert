@@ -24,6 +24,7 @@ jobs:
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          TO_ADDRESSES: ${{ secrets.TO_ADDRESSES }}
         run: python main.py
       - name: Commit updated seen and archive
         run: |
